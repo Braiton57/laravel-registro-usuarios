@@ -20,17 +20,10 @@ class AdminUsuarios extends Component
     public $modoEdicion = false;
     public $password;
 
-    protected $paginationTheme = 'tailwind'; // usa estilos bonitos con Tailwind
-
-    protected $rules = [
-        'nombre' => 'required|string|max:255',
-        'email' => 'required|email',
-        'imagen' => 'nullable|image|max:2048',
-    ];
-
+    protected $paginationTheme = 'tailwind'; 
     public function render()
     {
-        // 🔹 Paginar resultados (10 por página)
+        
         $usuarios = User::orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.admin-usuarios', [
@@ -82,7 +75,7 @@ class AdminUsuarios extends Component
 
         $this->reset(['nombre', 'email', 'imagen', 'password', 'usuario_id', 'modoEdicion']);
         $this->resetValidation();
-        $this->resetPage(); // 🔹 vuelve a la primera página
+        $this->resetPage();
     }
 
     public function editarUsuario($id)
