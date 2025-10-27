@@ -58,7 +58,7 @@ class AdminUsuarios extends Component
                 'name' => $this->nombre,
                 'email' => $this->email,
                 'imagen' => $rutaImagen ?? $usuario->imagen,
-                'password' => $this->password ? Hash::make($this->password) : $usuario->password,
+                'password' => $this->password ?: $usuario->password,
             ]);
 
             session()->flash('message', 'Usuario actualizado correctamente.');
@@ -67,7 +67,7 @@ class AdminUsuarios extends Component
                 'name' => $this->nombre,
                 'email' => $this->email,
                 'imagen' => $rutaImagen,
-                'password' => Hash::make($this->password),
+                'password' => $this->password,
             ]);
 
             session()->flash('message', 'Usuario creado correctamente.');
